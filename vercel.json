@@ -25,21 +25,18 @@
       ]
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "server/server.js"
+      "source": "/api/(.*)",
+      "destination": "server/server.js"
     },
     {
-      "src": "/uploads/(.*)",
-      "dest": "server/server.js"
+      "source": "/uploads/(.*)",
+      "destination": "server/server.js"
     },
     {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
