@@ -100,6 +100,22 @@ try {
     }
   }
 
+  // Strategy 1.5: Base64 encoded JSON string (most resilient against special characters)
+  if (!serviceAccount && process.env.FIREBASE_SERVICE_ACCOUNT_BASE64) {
+    try {
+      const decoded = Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT_BASE64.trim(), "base64").toString("utf8");
+      const parsed = JSON.parse(decoded);
+      if (parsed.private_key) {
+        parsed.private_key = parsed.private_key.replace(/\\n/g, "\n");
+      }
+      serviceAccount = parsed;
+      credentialSource = "FIREBASE_SERVICE_ACCOUNT_BASE64 env var";
+      console.log("Firebase: loaded credentials from Base64 env variable");
+    } catch (base64Err) {
+      console.warn("Failed to parse FIREBASE_SERVICE_ACCOUNT_BASE64:", base64Err.message);
+    }
+  }
+
   // Strategy 2: Individual env vars (most reliable on Vercel)
   if (!serviceAccount &&
       process.env.FIREBASE_PROJECT_ID &&
