@@ -130,13 +130,13 @@ try {
     }
     
     // Support multiple newline format encodings:
-    // 1. \\\\n (double-escaped from some sources)
-    // 2. \\n (standard Vercel format)
-    // 3. \n (already processed)
-    // 4. Literal newlines (already correct)
-    privateKey = privateKey.replace(/\\\\n/g, "\n");  // \\\\n → \n (double escape)
-    privateKey = privateKey.replace(/\\n/g, "\n");    // \\n → \n (single escape)
-    privateKey = privateKey.replace(/NEWLINE/gi, "\n"); // NEWLINE token fallback
+    // 1. Double-escaped \\\\n
+    // 2. Escaped \\n
+    // 3. Literal backslash + n (from environment dashboard entries)
+    privateKey = privateKey
+      .replace(/\\\\n/g, "\n")
+      .replace(/\\n/g, "\n")
+      .replace(/NEWLINE/gi, "\n");
     
     // Validate the key actually contains PEM markers
     if (!privateKey.includes("BEGIN PRIVATE KEY")) {
