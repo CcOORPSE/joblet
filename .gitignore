@@ -9,3 +9,5 @@ vercel-env.txt
 !biome.json
 server/node_modules
 client/node_modules
+unwanted
+en_content.md
