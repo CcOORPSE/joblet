@@ -1,0 +1,191 @@
+/**
+ * Joblet AI — unified design tokens (marketing, applicant app, recruiter dashboard)
+ */
+:root {
+  --jl-bg: #f8f9fb;
+  --jl-surface: #ffffff;
+  --jl-surface-muted: #f1f3f6;
+  --jl-surface-elevated: #e8eaef;
+  --jl-border: #e8eaef;
+  --jl-border-strong: #d1d5de;
+  --jl-accent: #ff4e25;
+  --jl-accent-hover: #e6451f;
+  --jl-accent-soft: rgba(255, 78, 37, 0.12);
+  --jl-navy: #101e3c;
+  --jl-navy-muted: #1e2e4f;
+  --jl-cream: #faf9f6;
+  --jl-text: #111827;
+  --jl-text-secondary: #6b7280;
+  --jl-text-muted: #9ca3af;
+  --jl-success: #16a34a;
+  --jl-success-soft: rgba(22, 163, 74, 0.12);
+  --jl-warning: #d97706;
+  --jl-warning-soft: rgba(217, 119, 6, 0.12);
+  --jl-danger: #dc2626;
+  --jl-danger-soft: rgba(220, 38, 38, 0.12);
+  --jl-info-soft: rgba(255, 78, 37, 0.08);
+  --jl-shadow-sm: 0 1px 3px rgba(17, 24, 39, 0.06);
+  --jl-shadow-md: 0 4px 24px rgba(17, 24, 39, 0.08);
+  --jl-radius: 0.75rem;
+  --jl-radius-lg: 1rem;
+  --jl-radius-xl: 1.25rem;
+
+  /* Applicant app shell aliases */
+  --app-bg: var(--jl-bg);
+  --app-surface: var(--jl-surface);
+  --app-surface-elevated: var(--jl-surface-muted);
+  --app-accent: var(--jl-accent);
+  --app-accent-hover: var(--jl-accent-hover);
+  --app-text-primary: var(--jl-text);
+  --app-text-secondary: var(--jl-text-secondary);
+  --app-success: var(--jl-success);
+  --app-warning: var(--jl-warning);
+  --app-danger: var(--jl-danger);
+
+  /* Chat workspace aliases */
+  --chat-bg: var(--jl-bg);
+  --chat-surface: var(--jl-surface);
+  --chat-surface-muted: var(--jl-surface-muted);
+  --chat-border: var(--jl-border);
+  --chat-border-strong: var(--jl-border-strong);
+  --chat-accent: var(--jl-accent);
+  --chat-accent-hover: var(--jl-accent-hover);
+  --chat-accent-soft: var(--jl-accent-soft);
+  --chat-text: var(--jl-text);
+  --chat-text-secondary: var(--jl-text-secondary);
+  --chat-text-muted: var(--jl-text-muted);
+  --chat-bot-bg: var(--jl-surface);
+  --chat-user-bg: var(--jl-accent);
+  --chat-sidebar-width: 280px;
+}
+
+/* Shared layout utilities */
+.jl-page {
+  min-height: 100dvh;
+  background-color: var(--jl-bg);
+  color: var(--jl-text);
+}
+
+.jl-page-cream {
+  min-height: 100dvh;
+  background-color: var(--jl-cream);
+  color: var(--jl-text);
+}
+
+.jl-card {
+  background: var(--jl-surface);
+  border: 1px solid var(--jl-border);
+  border-radius: var(--jl-radius-lg);
+  box-shadow: var(--jl-shadow-sm);
+}
+
+.jl-card-elevated {
+  background: var(--jl-surface);
+  border: 1px solid var(--jl-border);
+  border-radius: var(--jl-radius-xl);
+  box-shadow: var(--jl-shadow-md);
+}
+
+.jl-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: var(--jl-text);
+  background: var(--jl-surface);
+  border: 1px solid var(--jl-border);
+  border-radius: var(--jl-radius);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.jl-input:focus {
+  border-color: var(--jl-accent);
+  box-shadow: 0 0 0 3px var(--jl-accent-soft);
+}
+
+.jl-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--jl-accent);
+  border: none;
+  border-radius: var(--jl-radius);
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.jl-btn-primary:hover:not(:disabled) {
+  background: var(--jl-accent-hover);
+}
+
+.jl-btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.jl-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--jl-text);
+  background: var(--jl-surface-muted);
+  border: 1px solid var(--jl-border);
+  border-radius: var(--jl-radius);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.jl-btn-secondary:hover:not(:disabled) {
+  background: var(--jl-surface-elevated);
+}
+
+.jl-text-muted {
+  color: var(--jl-text-secondary);
+}
+
+.jl-text-accent {
+  color: var(--jl-accent);
+}
+
+.jl-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background: var(--jl-accent-soft);
+  color: var(--jl-accent);
+}
+
+.jl-badge-success {
+  background: var(--jl-success-soft);
+  color: var(--jl-success);
+}
+
+.jl-badge-danger {
+  background: var(--jl-danger-soft);
+  color: var(--jl-danger);
+}
+
+.jl-badge-warning {
+  background: var(--jl-warning-soft);
+  color: var(--jl-warning);
+}
+
+.jl-icon-accent {
+  color: var(--jl-accent);
+}
+
+.jl-divider {
+  border-color: var(--jl-border);
+}

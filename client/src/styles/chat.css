@@ -1,0 +1,183 @@
+/* Chat workspace — uses global theme tokens from theme.css */
+.chat-workspace {
+  background: var(--chat-bg);
+  color: var(--chat-text);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+.chat-sidebar {
+  background: var(--chat-surface);
+  border-right: 1px solid var(--chat-border);
+}
+
+.chat-main {
+  background: var(--chat-bg);
+}
+
+.chat-header {
+  background: var(--chat-surface);
+  border-bottom: 1px solid var(--chat-border);
+}
+
+.chat-composer-wrap {
+  background: linear-gradient(to top, var(--chat-bg) 70%, transparent);
+}
+
+.chat-composer {
+  background: var(--chat-surface);
+  border: 1px solid var(--chat-border);
+  box-shadow: var(--jl-shadow-md);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.chat-composer:focus-within {
+  border-color: var(--chat-border-strong);
+  box-shadow: 0 8px 32px rgba(17, 24, 39, 0.08);
+}
+
+.chat-btn-primary {
+  background: var(--chat-accent);
+  color: #fff;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.chat-btn-primary:hover:not(:disabled) {
+  background: var(--chat-accent-hover);
+}
+
+.chat-btn-primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.chat-btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.chat-btn-ghost {
+  color: var(--chat-text-secondary);
+  transition: background 0.15s, color 0.15s;
+}
+
+.chat-btn-ghost:hover:not(:disabled) {
+  background: var(--chat-surface-muted);
+  color: var(--chat-text);
+}
+
+.chat-nav-item {
+  color: var(--chat-text-secondary);
+  transition: background 0.15s, color 0.15s;
+}
+
+.chat-nav-item:hover {
+  background: var(--chat-surface-muted);
+  color: var(--chat-text);
+}
+
+.chat-nav-item.active {
+  background: var(--chat-accent-soft);
+  color: var(--chat-accent);
+  font-weight: 600;
+}
+
+.chat-history-item {
+  color: var(--chat-text-secondary);
+  transition: background 0.15s, color 0.15s;
+}
+
+.chat-history-item:hover {
+  background: var(--chat-surface-muted);
+  color: var(--chat-text);
+}
+
+.chat-history-item.active {
+  background: var(--chat-accent-soft);
+  color: var(--chat-text);
+  font-weight: 500;
+}
+
+.chat-bubble-bot {
+  background: var(--chat-bot-bg);
+  border: 1px solid var(--chat-border);
+  box-shadow: var(--jl-shadow-sm);
+}
+
+.chat-bubble-user {
+  background: var(--chat-user-bg);
+  color: #fff;
+}
+
+.chat-welcome-gradient {
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--chat-accent-soft), transparent 70%);
+}
+
+@keyframes chatSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.chat-spinner {
+  animation: chatSpin 0.8s linear infinite;
+}
+
+@keyframes chatPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.chat-typing-dot {
+  animation: chatPulse 1.2s ease-in-out infinite;
+}
+
+.chat-typing-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.chat-typing-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes chatDrawerIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.chat-drawer-enter {
+  animation: chatDrawerIn 0.28s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+
+.chat-thread-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--chat-border-strong) transparent;
+}
+
+.chat-thread-scroll::-webkit-scrollbar {
+  display: block;
+  width: 6px;
+}
+
+.chat-thread-scroll::-webkit-scrollbar-thumb {
+  background: var(--chat-border-strong);
+  border-radius: 999px;
+}
+
+.chat-workspace .rich-chat-text {
+  color: var(--chat-text);
+}
+
+.chat-workspace .rich-chat-text strong {
+  color: var(--chat-text);
+  font-weight: 600;
+}

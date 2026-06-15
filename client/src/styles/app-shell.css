@@ -1,0 +1,69 @@
+.app-shell {
+  min-height: 100dvh;
+  background-color: var(--app-bg);
+  color: var(--app-text-primary);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+.app-shell-layout {
+  overflow: hidden;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .app-shell {
+    height: 100dvh;
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .app-shell-layout {
+    height: 100%;
+  }
+}
+
+@media (max-width: 1023px) {
+  .app-shell {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@keyframes appFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.app-animate-in {
+  animation: appFadeIn 0.35s ease-out forwards;
+}
+
+@keyframes sheetSlideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.app-sheet-enter {
+  animation: sheetSlideUp 0.35s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+
+.app-section-body {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.app-section-inner {
+  max-width: 48rem;
+  margin: 0 auto;
+  width: 100%;
+}

@@ -1,0 +1,25 @@
+{
+  "name": "Joblet AI",
+  "short_name": "Joblet",
+  "description": "AI-powered job search and career assistant for applicants",
+  "start_url": "/app/chat",
+  "scope": "/app",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#0F172A",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/newFavicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/newFavicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Resumes are private — served only via Admin SDK signed URLs
+    match /resumes/{allPaths=**} {
+      allow read, write: if false;
+    }
+
+    // Company logos are public (non-sensitive branding images)
+    match /company-logos/{allPaths=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

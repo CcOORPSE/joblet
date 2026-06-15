@@ -1,0 +1,6 @@
+{
+  "ignore": [
+    "*firebase-adminsdk*.json",
+    "serviceAccountKey.json"
+  ]
+}
