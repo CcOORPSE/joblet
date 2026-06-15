@@ -2,17 +2,14 @@
   "name": "job-portal",
   "private": true,
   "version": "1.0.0",
-  "description": "Job Portal monorepo — run install and dev scripts from the project root",
+  "description": "Job Portal monorepo — Vercel deployment with client + server",
+  "engines": {
+    "node": ">=18.x"
+  },
   "scripts": {
-    "install:all": "npm install --prefix server && npm install --prefix client && yarn --cwd FoloUp install",
+    "install:all": "npm install --prefix server && npm install --prefix client",
     "server": "npm run server --prefix server",
     "client": "npm run dev --prefix client",
-    "foloup:dev": "yarn --cwd FoloUp dev -p 3001"
-  },
-  "dependencies": {
-    "@sentry/node": "^10.57.0",
-    "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "firebase-admin": "^14.0.0"
+    "build:client": "npm run build --prefix client"
   }
 }

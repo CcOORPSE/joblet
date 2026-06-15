@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "installCommand": "npm install --prefix server && npm install --prefix client",
   "builds": [
     {
       "src": "client/package.json",
@@ -10,12 +11,7 @@
     },
     {
       "src": "server/server.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": [
-          "server/*.json"
-        ]
-      }
+      "use": "@vercel/node"
     }
   ],
   "routes": [
@@ -31,8 +27,8 @@
       "handle": "filesystem"
     },
     {
-      "src": "/.*",
-      "dest": "/client/index.html"
+      "src": "/(.*)",
+      "dest": "client/$1"
     }
   ]
 }

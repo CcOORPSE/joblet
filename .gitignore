@@ -1,7 +1,6 @@
 node_modules
 .env
 vercel-env.txt
-# *.json
 !package.json
 !package-lock.json
 !tsconfig.json
@@ -9,5 +8,7 @@ vercel-env.txt
 !biome.json
 server/node_modules
 client/node_modules
+FoloUp/node_modules
 unwanted
 en_content.md
+*.local
