@@ -1,16 +1,27 @@
 node_modules
 .env
+.env.local
 vercel-env.txt
 !package.json
 !package-lock.json
 !tsconfig.json
 !components.json
 !biome.json
-server/node_modules
 client/node_modules
 FoloUp/node_modules
 unwanted
 en_content.md
-*.local
 jobfinder-b817d-firebase-adminsdk-fbsvc-5227f2e092.json
 publish.env
+
+# Server moved to separate repo
+server/
+
+# IDE and OS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db

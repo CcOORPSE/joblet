@@ -8,13 +8,10 @@ import { collection, onSnapshot, query, where } from "firebase/firestore";
 export const AppContext = createContext();
 
 export const AppContextProvider = (props) => {
-    let tempBackendUrl = (import.meta.env.VITE_BACKEND_URL || "").trim();
-    if (typeof window !== "undefined" && window.location.hostname !== "localhost") {
-      if (tempBackendUrl.includes("localhost") || tempBackendUrl.includes("127.0.0.1")) {
-        tempBackendUrl = "";
-      }
-    }
-    const backendUrl = tempBackendUrl;
+    // Use environment-specific backend URL
+    // Development: http://localhost:3000 (from .env.local)
+    // Production: https://jobletserver.onrender.com (from .env.production)
+    const backendUrl = (import.meta.env.VITE_BACKEND_URL || "").trim();
     const isBackendConfigured = true;
 
     const [user, setUser] = useState(null);
