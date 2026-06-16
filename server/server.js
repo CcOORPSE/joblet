@@ -2,6 +2,11 @@ import "./config/loadEnv.js";
 import './config/instrument.js'
 import express from "express";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const clientDistPath = path.join(__dirname, "../client/dist");
 import * as Sentry from "@sentry/node";
 import companyRoutes from './routes/companyRoutes.js'
 import connectCloudinary from './config/cloudinary.js';
@@ -66,9 +71,7 @@ app.use(
 
 app.use(express.json({ limit: "1mb" }));
 app.use("/uploads", express.static("uploads"));
-
-// Routes
-app.get("/", (req, res) => res.send("API Working with Firebase"));
+app.use(express.static(clientDistPath));
 
 app.get("/api/debug-firebase-init", (req, res) => {
   try {
@@ -209,6 +212,15 @@ app.get('/api/admin/metrics', protectRoute("admin"), async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// SPA fallback - route all non-API and non-uploads requests to index.html
+app.get('*', (req, res) => {
+  if (!req.path.startsWith('/api') && !req.path.startsWith('/uploads')) {
+    res.sendFile(path.join(clientDistPath, 'index.html'));
+  } else {
+    res.status(404).json({ success: false, message: 'Not Found' });
   }
 });
 
