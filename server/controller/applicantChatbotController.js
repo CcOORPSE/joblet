@@ -180,7 +180,7 @@ export const handleChatSession = async (req, res) => {
       // 1. "@server/job-scraper/" mode — no Gemini
       intent = "JOB_MATCH";
       let query = cleanedMessage;
-      let location = "Singapore";
+      let location = "India";
       if (query.toLowerCase().includes(" in ")) {
         const parts = query.split(/ in /i);
         query = parts[0].trim();

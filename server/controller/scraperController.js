@@ -34,7 +34,7 @@ export const scrapeJobs = async (req, res) => {
     // Run the Python scraper
     const result = await runJobScraper(
       query,
-      location || 'Singapore',
+      location || 'India',
       limit
     );
 

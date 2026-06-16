@@ -75,7 +75,7 @@ describe("resumeJobMatcher", () => {
       _id: "job2",
       title: "Data Analyst",
       description: "SQL and Python analytics",
-      location: "Singapore",
+      location: "India",
       level: "Junior",
       category: "Data",
       companyName: "DataCo",

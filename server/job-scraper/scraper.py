@@ -84,9 +84,19 @@ def _fetch_linkedin_job_ids(search_query: str, location: str) -> list:
     max_start = config.LINKEDIN_MAX_START
 
 
+    # Map common locations to their LinkedIn geoId
+    geo_id = config.LINKEDIN_GEO_ID
+    loc_lower = (location or "").lower()
+    if "india" in loc_lower:
+        geo_id = 102713980
+    elif "India" in loc_lower:
+        geo_id = 102454443
+    elif "dubai" in loc_lower:
+        geo_id = 100205264
+
     logging.info(f"--- Starting Phase 1: Scraping Job IDs (Max Start: {max_start}) ---")
     while start <= max_start:
-        target_url = f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={search_query.replace(' ', '%20')}&location={location}&geoId={config.LINKEDIN_GEO_ID}&f_TPR={config.LINKEDIN_JOB_POSTING_DATE}&f_JT={config.LINKEDIN_JOB_TYPE}&f_WT={config.LINKEDIN_F_WT}&start={start}"
+        target_url = f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={search_query.replace(' ', '%20')}&location={location}&geoId={geo_id}&f_TPR={config.LINKEDIN_JOB_POSTING_DATE}&f_JT={config.LINKEDIN_JOB_TYPE}&f_WT={config.LINKEDIN_F_WT}&start={start}"
 
         if start > 0:
             sleep_time = random.uniform(5.0, 15.0)
@@ -576,7 +586,7 @@ def _fetch_careers_future_job_details(job_id: str) -> dict | None:
             'job_id': job_data.get('uuid'),
             'company': _get_careers_future_job_company_name(job_data),
             'job_title': job_data.get('title'),
-            'location': 'Singapore',
+            'location': 'India',
             'level': job_data.get('positionLevels', [{'position': 'Not applicable'}])[0].get('position', 'Not applicable'),
             'provider': 'careers_future',
             'description': markdown_description, 
